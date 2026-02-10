@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Really Sorry 💔</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px 40px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: pop 0.8s ease;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 22px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 999px;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(255,111,145,0.4);
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 28px rgba(255,111,145,0.6);
+    }
+    .sorry {
+      font-size: 1.4rem;
+      margin-top: 15px;
+      display: none;
+    }
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: floatUp 4s linear forwards;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hey… I messed up 😔</h1>
+    <p>
+      I know I hurt you, and I'm really, really sorry.<br />
+    </p>
+    <button onclick="saySorry()">Click for a serious apology 💌</button>
+    <div id="sorry" class="sorry"></div>
+  </div>
+
+  <script>
+    let count = 0;
+    function saySorry() {
+      const sorryDiv = document.getElementById('sorry');
+      sorryDiv.style.display = 'block';
+      if (count < 50) {
+        count++;
+        sorryDiv.textContent = 'Sorry x ' + count + ' 😭';
+        spawnHeart();
+      } else {
+        sorryDiv.textContent = 'Okay okay… you win 🥺❤️ Please forgive me?';
+      }
+    }
+
+    function spawnHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.bottom = '-20px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  </script>
+</body>
+</html>
